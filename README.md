@@ -2,4 +2,5 @@
 2. react router
 3. tailwind css
 4. daisy ui
-5. 
+5. swiper
+6. Animate.css

@@ -2,26 +2,26 @@
     {
         "id": "1",
         "estate_title": "Luxury Beachfront Villa",
-        "segment_name": "Beachfront properties",
+        "segment_name": "Beachfront",
         "description": "A beautiful villa with a stunning ocean view.",
         "price": "$2,500,000",
         "status": "sale",
         "area": "3000 sq ft",
         "location": "Malibu, California",
-        "facilities": ["living room", "swimming pool", "kitchen"],
-        "image": "Image1"
+        "facilities": [ "garden","living room", "swimming pool", "kitchen", "garage", "gym"],
+        "image": "https://i.pinimg.com/564x/01/ea/a9/01eaa957af4312b0f2124026303dd52b.jpg"
     },
     {
         "id": "2",
         "estate_title": "Private Island Paradise",
-        "segment_name": "Private islands",
+        "segment_name": "Private island",
         "description": "Your own private island in the Caribbean.",
         "price": "$15,000,000",
         "status": "sale",
         "area": "20,000 sq ft",
         "location": "The Bahamas",
-        "facilities": ["living room", "swimming pool", "kitchen"],
-        "image": "Image2"
+        "facilities": ["living room","boat dock", "swimming pool", "kitchen", "helipad"],
+        "image": "https://i.pinimg.com/564x/9d/f9/03/9df9032c9483260fd2e103a2e0766e6a.jpg"
     },
     {
         "id": "3",
@@ -32,9 +32,22 @@
         "status": "rent",
         "area": "2500 sq ft",
         "location": "New York City",
-        "facilities": ["living room", "swimming pool", "kitchen"],
-        "image": "Image3"
+        "facilities": ["kitchen","living room", "rooftop terrace" ,"swimming pool", "private elevator"],
+        "image": "https://i.pinimg.com/564x/da/6f/77/da6f774f017bd4819836ae972ce26681.jpg"
     },
+    {
+        "id": "5",
+        "estate_title": "Luxury Villa by the Beach",
+        "segment_name": "Villas",
+        "description": "A stunning beachfront villa with breathtaking ocean views.",
+        "price": "$4,200,000",
+        "status": "sale",
+        "area": "3500 sq ft",
+        "location": "Malibu, California",
+        "facilities": ["kitchen", "living room", "private beach access", "swimming pool", "home cinema"],
+        "image": "https://i.pinimg.com/564x/1f/15/58/1f1558a0d327abb8b5097cedb4d1dfa7.jpg"
+    },
+    
     {
         "id": "4",
         "estate_title": "Mountain Resort",
@@ -44,8 +57,8 @@
         "status": "sale",
         "area": "5000 sq ft",
         "location": "Aspen, Colorado",
-        "facilities": ["living room", "swimming pool", "kitchen"],
-        "image": "Image4"
+        "facilities": ["ski-in/ski-out","living room", "swimming pool", "kitchen" , "hot tub"],
+        "image": "https://i.pinimg.com/564x/e8/ce/35/e8ce356722871ed84fe566290cc0b1eb.jpg"
     },
     {
         "id": "5",
@@ -56,7 +69,7 @@
         "status": "sale",
         "area": "10,000 sq ft",
         "location": "Beverly Hills, California",
-        "facilities": ["living room", "swimming pool", "kitchen"],
-        "image": "Image5"
+        "facilities": [ "wine cellar", "home theater","kitchen", "living room", "swimming pool"],
+        "image": "https://i.pinimg.com/564x/55/2d/20/552d20443f20b8b76937dad51cfbb4a2.jpg"
     }
 ]

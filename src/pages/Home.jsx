@@ -1,8 +1,11 @@
 import React from 'react';
 import Slider from '../components/Slider';
 import 'animate.css';
+import Estate from '../components/Estate';
 
 export default function Home() {
+
+
   return (
     <div className='container'>
       <Slider/>
@@ -11,6 +14,10 @@ export default function Home() {
         <h1 className='text-xl font-bold'>Welcome to</h1>
         <p className='text-indigo-700 text-3xl font-bold animate__animated animate__flash'>Luxury You</p>
       </div>
+<Estate/>
+
+
+
 
     </div>
 

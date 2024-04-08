@@ -4,3 +4,4 @@
 4. daisy ui
 5. swiper
 6. Animate.css
+7. AOS packege

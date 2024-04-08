@@ -6,9 +6,7 @@ function App() {
 
   return (
     <>
-      <div>
-       
-      </div>
+    
       <h1>Luxury You</h1>
      
     </>

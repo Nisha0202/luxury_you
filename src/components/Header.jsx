@@ -8,7 +8,7 @@ export default function () {
         <>
 <div className="navbar bg-base-100 px-0">
   <div className="navbar-start">
-    <a className="text-xl inter text-indigo-700">Luxury You</a>
+    <a className="text-xl inter text-indigo-700 font-bold">Luxury You</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -18,7 +18,7 @@ export default function () {
     </ul>
   </div>
   <div className="navbar-end">
-    <NavLink className=" px-4 py-2 text-white font-bold bg-indigo-700">Login</NavLink>
+    <NavLink className=" px-4 py-2 text-white font-bold bg-indigo-700 rounded-md">Login</NavLink>
   </div>
 </div>
         

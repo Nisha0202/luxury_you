@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1",
+        "estate_title": "Luxury Beachfront Villa",
+        "segment_name": "Beachfront properties",
+        "description": "A beautiful villa with a stunning ocean view.",
+        "price": "$2,500,000",
+        "status": "sale",
+        "area": "3000 sq ft",
+        "location": "Malibu, California",
+        "facilities": ["living room", "swimming pool", "kitchen"],
+        "image": "Image1"
+    },
+    {
+        "id": "2",
+        "estate_title": "Private Island Paradise",
+        "segment_name": "Private islands",
+        "description": "Your own private island in the Caribbean.",
+        "price": "$15,000,000",
+        "status": "sale",
+        "area": "20,000 sq ft",
+        "location": "The Bahamas",
+        "facilities": ["living room", "swimming pool", "kitchen"],
+        "image": "Image2"
+    },
+    {
+        "id": "3",
+        "estate_title": "Penthouse in the City",
+        "segment_name": "Penthouse",
+        "description": "A luxurious penthouse with a city skyline view.",
+        "price": "$3,500,000",
+        "status": "rent",
+        "area": "2500 sq ft",
+        "location": "New York City",
+        "facilities": ["living room", "swimming pool", "kitchen"],
+        "image": "Image3"
+    },
+    {
+        "id": "4",
+        "estate_title": "Mountain Resort",
+        "segment_name": "Resorts",
+        "description": "A serene mountain resort in the heart of nature.",
+        "price": "$1,800,000",
+        "status": "sale",
+        "area": "5000 sq ft",
+        "location": "Aspen, Colorado",
+        "facilities": ["living room", "swimming pool", "kitchen"],
+        "image": "Image4"
+    },
+    {
+        "id": "5",
+        "estate_title": "Grand Mansion",
+        "segment_name": "Mansions",
+        "description": "A grand mansion with classic architecture.",
+        "price": "$5,000,000",
+        "status": "sale",
+        "area": "10,000 sq ft",
+        "location": "Beverly Hills, California",
+        "facilities": ["living room", "swimming pool", "kitchen"],
+        "image": "Image5"
+    }
+]

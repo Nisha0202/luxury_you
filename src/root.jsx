@@ -14,7 +14,7 @@ export default function Root() {
                 <Outlet />
                 </div>
                
-                {/* <Footer></Footer> */}
+                <Footer></Footer>
 
 
 

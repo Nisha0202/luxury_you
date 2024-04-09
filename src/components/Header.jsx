@@ -18,7 +18,7 @@ export default function () {
     </ul>
   </div>
   <div className="navbar-end">
-    <NavLink to='/login' className=" px-4 py-2 font-bold bg-indigo-300 rounded-md">Login</NavLink>
+    <NavLink to='/login' className=" px-4 py-2 font-bold btn-ghost text-indigo-700 rounded-md">Login</NavLink>
   </div>
 </div>
         

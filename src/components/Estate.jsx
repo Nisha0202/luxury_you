@@ -14,7 +14,7 @@ export default function Estate() {
     }, []);
   
   return (
-    <div className='flex justify-center items-center'>
+    <div className='flex justify-center items-center pb-12'>
          <div className='flex flex-wrap flex-col gap-4 md:flex-row md:justify-between md:gap-12'>
 
 {data.map((estate, index) => (

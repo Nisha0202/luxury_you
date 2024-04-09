@@ -38,7 +38,7 @@
     {
         "id": "5",
         "estate_title": "Luxury Villa by the Beach",
-        "segment_name": "Villas",
+        "segment_name": "Villa",
         "description": "A stunning beachfront villa with breathtaking ocean views.",
         "price": "$4,200,000",
         "status": "sale",
@@ -51,7 +51,7 @@
     {
         "id": "4",
         "estate_title": "Mountain Resort",
-        "segment_name": "Resorts",
+        "segment_name": "Resort",
         "description": "A serene mountain resort in the heart of nature.",
         "price": "$1,800,000",
         "status": "sale",
@@ -63,12 +63,12 @@
     {
         "id": "5",
         "estate_title": "Grand Mansion",
-        "segment_name": "Mansions",
+        "segment_name": "Mansion",
         "description": "A grand mansion with classic architecture.",
         "price": "$5,000,000",
         "status": "sale",
         "area": "10,000 sq ft",
-        "location": "Beverly Hills, California",
+        "location": "Beverly Hills",
         "facilities": [ "wine cellar", "home theater","kitchen", "living room", "swimming pool"],
         "image": "https://i.pinimg.com/564x/55/2d/20/552d20443f20b8b76937dad51cfbb4a2.jpg"
     }

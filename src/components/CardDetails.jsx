@@ -9,9 +9,7 @@ export default function CardDetails() {
     return (
         <div className='py-6 border-2 rounded-md px-2 lg:px-6'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 h-full'>
-                <div className='lg:w-full w-full lg:h-[610px] h-80 md:w-72 mx-auto lg:mx-0 rounded-2xl' >
-                    <img src={estate.image} alt="" className='w-full h-full rounded-md border-[2px] border-base-400 object-fill' />
-                </div>
+               
 
                 {/* details */}
                 <div className='w-full'>
@@ -19,7 +17,7 @@ export default function CardDetails() {
                         <h1 className=' playful text-xl font-bold text-black'>{estate.estate_title}</h1>
                         <div className='flex flex-col gap-4 intent'>
                             <p className='text-gray-600 text-base font-semibold '>{estate.segment_name}</p>
-                            <p className='text-gray-600 text-base font-semibold  border-y-2 py-2'>{estate.description}</p>
+                            <p className='text-gray-600 text-base border-y-2 py-2'>{estate.description}</p>
                             <p className=' font-normal lg:text-sm/8 text-xs/9'><span className='font-bold lexend lg:text-sm/8 text-xs'>Price:</span> {estate.price}</p>
                             <div className="px-0 pb-6 border-b-2 *:font-bold flex flex-wrap gap-4">
                                 <span className='text-sm/8 inter text-sm:'>Facilities</span>
@@ -47,6 +45,10 @@ export default function CardDetails() {
                         </div>
                     </div>
                 </div>
+ <div className='lg:w-full w-full lg:h-[610px] h-80 md:w-72 mx-auto lg:mx-0 rounded-2xl' >
+                    <img src={estate.image} alt="" className='w-full h-full rounded-md border-[2px] border-base-400 object-fill' />
+                </div>
+
             </div>
         </div>
     )

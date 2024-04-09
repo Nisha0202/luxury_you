@@ -6,3 +6,4 @@
 6. Animate.css
 7. AOS packege
 8. react-icon
+9. sweet-alert

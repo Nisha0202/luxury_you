@@ -4,7 +4,7 @@ import { AiOutlineMail } from "react-icons/ai";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
-export default function SignUp() {
+export default function Login() {
     const [formerror, setFormerror] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 

@@ -8,6 +8,7 @@ import './index.css'
 import Root from '../src/root';
 import Home from './pages/Home';
 import ErrorPage from './components/ErrorPage';
+import CardDetails from './components/CardDetails';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home/>,
+      },
+      {
+        path: "/property_details/:id",
+        element: <CardDetails/>,
+        loader: ()=> fetch('../estate.json')
       },
     
     ],

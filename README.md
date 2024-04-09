@@ -5,3 +5,4 @@
 5. swiper
 6. Animate.css
 7. AOS packege
+8. react-icon

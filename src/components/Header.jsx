@@ -6,7 +6,7 @@ export default function () {
     return (
 
         <>
-<div className="navbar bg-base-100 px-0 py-6">
+<div className="navbar bg-base-100 px-4 lg:px-0 py-6">
   <div className="navbar-start">
     <a href='/' className="text-xl inter text-indigo-700 font-bold">Luxury You</a>
   </div>
@@ -18,7 +18,7 @@ export default function () {
     </ul>
   </div>
   <div className="navbar-end">
-    <NavLink to='/login' className=" px-4 py-2 text-white font-bold bg-indigo-700 rounded-md">Login</NavLink>
+    <NavLink to='/login' className=" px-4 py-2 font-bold bg-indigo-300 rounded-md">Login</NavLink>
   </div>
 </div>
         

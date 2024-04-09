@@ -9,6 +9,8 @@ import Root from '../src/root';
 import Home from './pages/Home';
 import ErrorPage from './components/ErrorPage';
 import CardDetails from './components/CardDetails';
+import Login from './pages/Login'
+import SignUp from './pages/Signup';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +27,14 @@ const router = createBrowserRouter([
         element: <CardDetails/>,
         loader: ()=> fetch('../estate.json')
       },
-    
+      {
+        path: "/login",
+        element: <Login/>,
+      },
+      {
+        path: "/signup",
+        element: <SignUp/>,
+      },
     ],
   },
 ]);

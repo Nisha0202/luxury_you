@@ -8,7 +8,6 @@ const Card = ({ estate }) => {
     AOS.init();
   }, []);
 
-
   return (
 
     <div className="card w-64 md:w-80 border-2 p-4 rounded-md h-xs" data-aos="fade">

@@ -4,7 +4,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 export const AuthContext = createContext(null);
 
 export default function FirbaseProvider(props) {
-
+  const auth = getAuth();
   const createUser = (email, password)=>{
     return createUserWithEmailAndPassword(auth, email, password)
 

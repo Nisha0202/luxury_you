@@ -7,36 +7,27 @@ import { FaRegUser } from "react-icons/fa";
 import { MdOutlinePhotoLibrary } from "react-icons/md";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
-import {AuthContext} from '../FirebaseProbider/FirbaseProvider'
+import { AuthContext } from '../FirebaseProbider/FirbaseProvider'
+import { useForm} from "react-hook-form"
+import Swal from 'sweetalert2';
 
 export default function SignUp() {
-
-    const {createUser} = useContext(AuthContext);
-
-console.log(createUser);
+    const { createUser } = useContext(AuthContext);
 
     const [formerror, setFormerror] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-
-
-
-    
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const email = e.target.email.value;
-        const pass = e.target.pass.value;
-        const usern = e.target.username.value;
-        console.log(email, pass, usern);
-        createUserWithEmailAndPassword(auth, email, pass)
-        .then(result => {
-            console.log('User created successfully');
-        })
-        .catch(error => {
-            console.error('Error creating user:', error.message);
-            setFormerror(error.message);
-        });
-
+    const {
+        register,
+        handleSubmit,
+        watch,
+        reset,
+        formState: { errors },
+    } = useForm();
+   
+    console.log(watch("username")) // watch input value by passing the name of it
+    const onSubmit = (data) => {
+        const { email, pass, username, image} = data;
+         createUser(email, pass);
         // Check password conditions
         const hasUppercase = pass.toLowerCase() !== pass;
         const hasLowercase = pass.toUpperCase() !== pass;
@@ -47,34 +38,54 @@ console.log(createUser);
             return;
         }
 
-        console.log(email, pass);
-        // Show a toast or sweet alert here
-    }
+        createUserWithEmailAndPassword(auth, email, pass)
+            .then(result => {
+                console.log('User created successfully');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'User created successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                reset();
+            })
+            .catch(error => {
+                console.error('Error creating user:', error.message);
+                setFormerror(error.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.message,
+                });
+            });
+    };
 
     return (
-        <div className='flex flex-col items-center gap-8 py-16'>
-            <form action="" onSubmit={handleSubmit} className='max-w-96 mx-auto flex flex-col items-center gap-6 inter'>
-            
+        <div className='flex flex-col items-center gap-8 py-16 px-2'>
+            <form onSubmit={handleSubmit(onSubmit)} className='max-w-96 mx-auto flex flex-col items-center gap-6 inter'>
                 <label className="input input-bordered flex items-center gap-2 text-gray-600 w-full">
                     <FaRegUser />
-                    <input type="text" className="grow" placeholder="Name" name='username' />
+                    <input type="text" className="grow" placeholder="Name" name='username'
+                     {...register("username", { required: true })} />
                 </label>
                 <label className="input input-bordered flex items-center gap-2 text-gray-600 w-full">
-                    <MdOutlinePhotoLibrary/>
-                    <input type="text" className="grow" placeholder="Photo URL" name='photo' />
+                    <MdOutlinePhotoLibrary />
+                    <input type="text" className="grow" placeholder="Photo URL" name='photo' 
+                        {...register("image", { required: false })}/>
                 </label>
                 <label className="input input-bordered flex items-center gap-2 text-gray-600 w-full">
                     <AiOutlineMail />
-                    <input type="text" className="grow" placeholder="Email" name='email' />
+                    <input type="text" className="grow" placeholder="Email" name='email'
+                        {...register("email", { required: true })} />
                 </label>
                 <label className="input input-bordered flex items-center gap-2 w-full">
                     {showPassword ? <IoEyeOutline onClick={() => setShowPassword(false)} /> : <IoEyeOffOutline onClick={() => setShowPassword(true)} />}
-                    <input type={showPassword ? "text" : "password"} className="grow" name='pass' placeholder='password' />
+                    <input type={showPassword ? "text" : "password"} className="grow" name='pass' placeholder='password'
+                    {...register("pass", { required: true })}  />
                 </label>
                 <button type='submit' className="btn w-full rounded-md text-white bg-indigo-700 font-bold">Register</button>
                 {formerror && <p className='text-xs font-bold max-w-xs text-wrap text-red-600'> {formerror}!</p>}
             </form>
-
             <div className='flex flex-col md:flex-row mx-auto gap-4'>
                 <button className="btn rounded-md bg-blue-300 flex items-center gap-2">
                     <FaFacebookF /> Join with Facebook

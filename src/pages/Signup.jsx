@@ -1,30 +1,41 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { FaRegUser } from "react-icons/fa";
-import { GoPlus } from "react-icons/go";
+import { MdOutlinePhotoLibrary } from "react-icons/md";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import auth from '../firebase/firebase.config';
+import {AuthContext} from '../FirebaseProbider/FirbaseProvider'
 
 export default function SignUp() {
+
+    const {createUser} = useContext(AuthContext);
+
+console.log(createUser);
+
     const [formerror, setFormerror] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
-    const fileInputRef = useRef();
 
 
-    const handleFileInputClick = () => {
-        fileInputRef.current.click();
-    };
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        console.log(file);
-    };
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const pass = e.target.pass.value;
+        const usern = e.target.username.value;
+        console.log(email, pass, usern);
+        createUserWithEmailAndPassword(auth, email, pass)
+        .then(result => {
+            console.log('User created successfully');
+        })
+        .catch(error => {
+            console.error('Error creating user:', error.message);
+            setFormerror(error.message);
+        });
 
         // Check password conditions
         const hasUppercase = pass.toLowerCase() !== pass;
@@ -43,15 +54,14 @@ export default function SignUp() {
     return (
         <div className='flex flex-col items-center gap-8 py-16'>
             <form action="" onSubmit={handleSubmit} className='max-w-96 mx-auto flex flex-col items-center gap-6 inter'>
-                <figure className="w-20 h-20 rounded-full bg-white relative">
-                    <div className="w-20 h-20 rounded-full border-2 border-gray-300 flex items-center justify-center cursor-pointer" onClick={handleFileInputClick}>
-                        <GoPlus size={24} />
-                        <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
-                    </div>
-                </figure>
+            
                 <label className="input input-bordered flex items-center gap-2 text-gray-600 w-full">
                     <FaRegUser />
                     <input type="text" className="grow" placeholder="Name" name='username' />
+                </label>
+                <label className="input input-bordered flex items-center gap-2 text-gray-600 w-full">
+                    <MdOutlinePhotoLibrary/>
+                    <input type="text" className="grow" placeholder="Photo URL" name='photo' />
                 </label>
                 <label className="input input-bordered flex items-center gap-2 text-gray-600 w-full">
                     <AiOutlineMail />

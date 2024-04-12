@@ -11,29 +11,30 @@ import ErrorPage from './components/ErrorPage';
 import CardDetails from './components/CardDetails';
 import Login from './pages/Login'
 import SignUp from './pages/Signup';
+import FirbaseProvider from './FirebaseProbider/FirbaseProvider';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root/>,
+    element: <Root />,
     errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
-        element: <Home/>,
+        element: <Home />,
       },
       {
         path: "/property_details/:id",
-        element: <CardDetails/>,
-        loader: ()=> fetch('../estate.json')
+        element: <CardDetails />,
+        loader: () => fetch('../estate.json')
       },
       {
         path: "/login",
-        element: <Login/>,
+        element: <Login />,
       },
       {
         path: "/signup",
-        element: <SignUp/>,
+        element: <SignUp />,
       },
     ],
   },
@@ -41,6 +42,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <FirbaseProvider>
+      <RouterProvider router={router} />
+    </FirbaseProvider>
+
   </React.StrictMode>,
 )

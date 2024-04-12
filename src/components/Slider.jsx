@@ -18,9 +18,9 @@ export default function Slider() {
         navigation={true}
         modules={[Pagination, Navigation]}
         className="mySwiper rounded-md " >
-        <SwiperSlide className=''><img className='' src="https://www.papercitymag.com/wp-content/uploads/2023/08/TheAllenLevel35Penthouse_Interior_SuitB_Cam2_081123-1-2048x1152.jpg" alt="" srcset="" /></SwiperSlide>
-        <SwiperSlide><img src="https://www.papercitymag.com/wp-content/uploads/2023/08/TheAllenLevel35Penthouse_Interior_SuitA_Cam5_082423-2048x1802.jpg" alt="" srcset="" /></SwiperSlide>
-        <SwiperSlide><img src="https://www.papercitymag.com/wp-content/uploads/2023/08/TheAllenLevel35Penthouse_Interior_SuitA_Cam1_082423-1536x864.jpg" alt="" srcset="" /></SwiperSlide>
+        <SwiperSlide className=''><img className='' src="https://www.papercitymag.com/wp-content/uploads/2023/08/TheAllenLevel35Penthouse_Interior_SuitB_Cam2_081123-1-2048x1152.jpg" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="https://www.papercitymag.com/wp-content/uploads/2023/08/TheAllenLevel35Penthouse_Interior_SuitA_Cam5_082423-2048x1802.jpg" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="https://www.papercitymag.com/wp-content/uploads/2023/08/TheAllenLevel35Penthouse_Interior_SuitA_Cam1_082423-1536x864.jpg" alt=""/></SwiperSlide>
       </Swiper>
     </>
   );

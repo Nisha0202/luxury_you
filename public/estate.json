@@ -41,7 +41,7 @@
         "segment_name": "Villa",
         "description": "A stunning beachfront villa with breathtaking ocean views.",
         "price": "$4,200,000",
-        "status": "sale",
+        "status": "rent",
         "area": "3500 sq ft",
         "location": "Malibu, California",
         "facilities": ["kitchen", "living room", "private beach access", "swimming pool", "home cinema"],
@@ -61,7 +61,7 @@
         "image": "https://i.pinimg.com/564x/e8/ce/35/e8ce356722871ed84fe566290cc0b1eb.jpg"
     },
     {
-        "id": "5",
+        "id": "6",
         "estate_title": "Grand Mansion",
         "segment_name": "Mansion",
         "description": "A grand mansion with classic architecture.",

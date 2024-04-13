@@ -13,7 +13,6 @@ import Swal from 'sweetalert2';
 
 export default function SignUp() {
     const { createUser } = useContext(AuthContext);
-
     const [formerror, setFormerror] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const {
@@ -48,6 +47,7 @@ export default function SignUp() {
                     timer: 1500
                 });
                 reset();
+                setFormerror(null);
             })
             .catch(error => {
                 console.error('Error creating user:', error.message);
@@ -67,6 +67,7 @@ export default function SignUp() {
                     <FaRegUser />
                     <input type="text" className="grow" placeholder="Name" name='username'
                      {...register("username", { required: true })} />
+                      {errors.username && <span className='text-xs text-red-500'>required field</span>}
                 </label>
                 <label className="input input-bordered flex items-center gap-2 text-gray-600 w-full">
                     <MdOutlinePhotoLibrary />
@@ -77,11 +78,13 @@ export default function SignUp() {
                     <AiOutlineMail />
                     <input type="text" className="grow" placeholder="Email" name='email'
                         {...register("email", { required: true })} />
+                         {errors.email && <span className='text-xs text-red-500'>required field</span>}
                 </label>
                 <label className="input input-bordered flex items-center gap-2 w-full">
                     {showPassword ? <IoEyeOutline onClick={() => setShowPassword(false)} /> : <IoEyeOffOutline onClick={() => setShowPassword(true)} />}
                     <input type={showPassword ? "text" : "password"} className="grow" name='pass' placeholder='password'
                     {...register("pass", { required: true })}  />
+                     {errors.pass && <span className='text-xs text-red-500'>required field</span>}
                 </label>
                 <button type='submit' className="btn w-full rounded-md text-white bg-indigo-700 font-bold">Register</button>
                 {formerror && <p className='text-xs font-bold max-w-xs text-wrap text-red-600'> {formerror}!</p>}

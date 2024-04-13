@@ -1,30 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-
+import { useForm } from "react-hook-form"
+import Swal from 'sweetalert2';
+import auth from '../firebase/firebase.config';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { AuthContext } from '../FirebaseProbider/FirbaseProvider'
 export default function Login() {
+    const { signInUser} = useContext(AuthContext);
     const [formerror, setFormerror] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const email = e.target.email.value;
-        const pass = e.target.pass.value;
+    const onSubmit = (data) => {
+        const { email, pass } = data;
+        signInUser(email, pass);
         console.log(email, pass);
-    }
+
+        signInWithEmailAndPassword(auth, email, pass)
+            .then(result => {
+                console.log('Login successful');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login successful',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                reset();
+            })
+            .catch(error => {
+                console.error('Error creating user:', error.message);
+                setFormerror(error.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.message,
+                });
+            });
+
+    };
 
     return (
-        <div className='flex flex-col items-center gap-8 py-16'>
-            <form action="" onSubmit={handleSubmit} className='max-w-96 mx-auto flex flex-col gap-6  inter'>
+        <div className='flex flex-col items-center gap-8 py-16 px-2'>
+            <form onSubmit={handleSubmit(onSubmit)} className='max-w-96 mx-auto flex flex-col gap-6  inter'>
                 <label className="input input-bordered flex items-center gap-2 text-gray-600">
                     <AiOutlineMail />
-                    <input type="text" className="grow" placeholder="Email" name='email' />
+                    <input type="text" className="grow" placeholder="Email" name='email'
+                        {...register("email", { required: true })} />
+                    {errors.pass && <span className='text-xs text-red-500'>required field</span>}
                 </label>
                 <label className="input input-bordered flex items-center gap-2">
                     {showPassword ? <IoEyeOutline onClick={() => setShowPassword(false)} /> : <IoEyeOffOutline onClick={() => setShowPassword(true)} />}
-                    <input type={showPassword ? "text" : "password"} className="grow" name='pass' placeholder='password' />
+                    <input type={showPassword ? "text" : "password"} className="grow" name='pass' placeholder='password'
+                        {...register("pass", { required: true })} />
+                    {errors.pass && <span className='text-xs text-red-500'>required field</span>}
                 </label>
                 <button type='submit' className="btn rounded-md text-white bg-indigo-700 font-bold">Log In</button>
 

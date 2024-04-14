@@ -6,12 +6,9 @@ import { Link, useNavigate} from 'react-router-dom';
 import { useForm } from "react-hook-form"
 import Swal from 'sweetalert2';
 import { AuthContext } from '../FirebaseProbider/FirbaseProvider'
-
 export default function Login() {
-
     //google sign up
     const { googleLogin } = useContext(AuthContext);
-
     const { signInUser } = useContext(AuthContext);
     const [formerror, setFormerror] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -53,33 +50,6 @@ export default function Login() {
                     text: error.message,
                 });
         });
-
-
-
-
-
-
-        // signInWithEmailAndPassword(auth, email, pass)
-        //     .then(result => {
-        //         console.log('Login successful');
-        //         Swal.fire({
-        //             icon: 'success',
-        //             title: 'Login successful',
-        //             showConfirmButton: false,
-        //             timer: 1500
-        //         });   
-        //         reset(); 
-        //         navigate('/');
-        //     })
-        //     .catch(error => {
-        //         console.error('Error creating user:', error.message);
-        //         setFormerror(error.message);
-        //         Swal.fire({
-        //             icon: 'error',
-        //             title: 'Oops...',
-        //             text: error.message,
-        //         });
-        //     });
 
     };
 

@@ -1,108 +1,122 @@
 import React, { createContext, useEffect, useState } from 'react'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signInWithPopup} from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signInWithPopup } from "firebase/auth";
 export const AuthContext = createContext(null);
-import { GoogleAuthProvider,  updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, updateProfile } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import { reload } from "firebase/auth";
 import auth from '../firebase/firebase.config';
 import { GithubAuthProvider } from "firebase/auth";
 export default function FirbaseProvider(props) {
 
-const googleprovider = new GoogleAuthProvider();
-const githubprovider = new GithubAuthProvider();
+  const googleprovider = new GoogleAuthProvider();
+  const githubprovider = new GithubAuthProvider();
 
-  const [usern , setUsern] = useState(false);
+  const [usern, setUsern] = useState(false);
 
   const createUser = async (email, password, username, image) => {
     try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        // Signed in 
-        const user = userCredential.user;
-        await updateProfile(user,{
-            displayName: username,
-            photoURL: image
-        });
-        const updatedUser = await reload(user);
-        setUsern(updatedUser); // Set the usern state with the updated user object
-        console.log(updatedUser);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      // Signed in 
+      const user = userCredential.user;
+      await updateProfile(user, {
+        displayName: username,
+        photoURL: image
+      });
+      const updatedUser = await reload(user);
+      setUsern(updatedUser); // Set the usern state with the updated user object
+      console.log(updatedUser);
     } catch (error) {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage, errorCode);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage, errorCode);
     }
-}
-  const signInUser = (email, password) =>{
+  }
+  const signInUser = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
   }
+
+  //update user
+  const updateData = (username, image) => {
+    return updateProfile(auth.currentUser, {
+      displayName: username,
+      photoURL: image
+    })
+
+  }
+
+
   //google
-  const googleLogin=()=>{
+  const googleLogin = () => {
     signInWithPopup(auth, googleprovider)
-  .then((result) => {
-    setUsern(result.user);
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const accessToken = credential.accessToken;
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-  });
+      .then((result) => {
+        setUsern(result.user);
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const accessToken = credential.accessToken;
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+      });
   };
 
   // github
-  const githubLogin=()=>{
+  const githubLogin = () => {
     signInWithPopup(auth, githubprovider)
-  .then((result) => {
-    setUsern(result.user);
-    const credential = GithubAuthProvider.credentialFromResult(result);
-    const accessToken = credential.accessToken;
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.email;
-    // The AuthCredential type that was used.
-    const credential = GithubAuthProvider.credentialFromResult(result);
-  });
+      .then((result) => {
+        setUsern(result.user);
+        const credential = GithubAuthProvider.credentialFromResult(result);
+        const accessToken = credential.accessToken;
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = GithubAuthProvider.credentialFromResult(result);
+      });
   };
 
-//logout
-const logOut = ()=>{
-  signOut(auth)
-    .then(() => {
-      // Sign-out successful.
-      console.log('Sign-out successful');
-      setUsern(false);
+  //logout
+  const logOut = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        console.log('Sign-out successful');
+        setUsern(false);
 
-    })
-    .catch((error) => {
-      console.error('Error signing out:', error);
-    });
-}
+      })
+      .catch((error) => {
+        console.error('Error signing out:', error);
+      });
+  }
   //obserer
-  useEffect( ()=>{
-  onAuthStateChanged(auth, (user) => {
-    if (user) { 
-      setUsern(user);
-    } else {
-      console.log("error");
-    }
-  });
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUsern(user);
+      } else {
+        console.log("error");
+      }
+    });
   }, [])
 
 
-  const allValues = {createUser,
-  signInUser, googleLogin, logOut, usern, githubLogin};
+  const allValues = {
+    createUser,
+    signInUser, googleLogin, logOut, usern, githubLogin,
+    updateData
+  };
 
 
 
   return (
     <AuthContext.Provider value={allValues}>
       {props.children}
-      </AuthContext.Provider>
+    </AuthContext.Provider>
   )
 }

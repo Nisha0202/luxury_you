@@ -11,7 +11,10 @@ import ErrorPage from './components/ErrorPage';
 import CardDetails from './components/CardDetails';
 import Login from './pages/Login'
 import SignUp from './pages/Signup';
+import Contact from './pages/Contact'
+import About from './pages/About';
 import FirbaseProvider from './FirebaseProbider/FirbaseProvider';
+import UpdateData from './pages/UpdateData';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +38,18 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp />,
+      },
+      {
+        path: "/contact",
+        element: <Contact/>,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/update",
+        element: <UpdateData/>,
       },
     ],
   },

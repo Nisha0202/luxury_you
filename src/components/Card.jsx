@@ -1,14 +1,36 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from 'react-router-dom';
 import { IoLocationOutline } from "react-icons/io5";
+import { AuthContext } from '../FirebaseProbider/FirbaseProvider';
+
+ import { useNavigate } from 'react-router-dom';
 
 const Card = ({ estate }) => {
   useEffect(() => {
     AOS.init();
   }, []);
 
+ 
+
+// Inside your component
+const navigate = useNavigate();
+
+  const {usern} = useContext(AuthContext);
+
+  const handleViewProperty = () => {
+    if (usern) {
+      // If usern exists, redirect to /property_details/id
+      navigate('/property_details/${estate.id}');
+    } else {
+      // If usern does not exist, redirect to /login
+      navigate('/login');
+    }
+  };
+
+
+  
   return (
     <div >
        
@@ -38,8 +60,8 @@ const Card = ({ estate }) => {
         ))}
         <p>...</p>
       </ul>
-      <Link className='w-full' key={estate.id} to={`/property_details/${estate.id}`}>
-      <div className='btn w-full rounded-md bg-indigo-300 mt-2'>View Property</div></Link>
+      <div className='btn w-full rounded-md bg-indigo-300 mt-2' onClick={handleViewProperty}>View Property</div>
+
     </div>
     </div>
 

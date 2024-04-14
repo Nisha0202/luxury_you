@@ -44,6 +44,7 @@ const logOut = ()=>{
     .then(() => {
       // Sign-out successful.
       console.log('Sign-out successful');
+      window.location.reload();
     })
     .catch((error) => {
       // An error happened.

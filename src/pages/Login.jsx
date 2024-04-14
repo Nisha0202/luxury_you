@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { useForm } from "react-hook-form"
 import Swal from 'sweetalert2';
 import auth from '../firebase/firebase.config';
@@ -23,7 +23,7 @@ export default function Login() {
         reset,
         formState: { errors },
     } = useForm();
-
+    const navigate = useNavigate();
     const onSubmit = (data) => {
         const { email, pass } = data;
         signInUser(email, pass);
@@ -38,7 +38,9 @@ export default function Login() {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                reset();
+               
+                reset(); 
+                navigate('/');
             })
             .catch(error => {
                 console.error('Error creating user:', error.message);

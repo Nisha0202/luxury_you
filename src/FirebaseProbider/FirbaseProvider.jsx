@@ -5,10 +5,14 @@ import { GoogleAuthProvider,  updateProfile } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import { reload } from "firebase/auth";
 import auth from '../firebase/firebase.config';
-
+import { GithubAuthProvider } from "firebase/auth";
 export default function FirbaseProvider(props) {
+
 const googleprovider = new GoogleAuthProvider();
+const githubprovider = new GithubAuthProvider();
+
   const [usern , setUsern] = useState(false);
+
   const createUser = async (email, password, username, image) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -48,18 +52,34 @@ const googleprovider = new GoogleAuthProvider();
   });
   };
 
+  // github
+  const githubLogin=()=>{
+    signInWithPopup(auth, githubprovider)
+  .then((result) => {
+    setUsern(result.user);
+    const credential = GithubAuthProvider.credentialFromResult(result);
+    const accessToken = credential.accessToken;
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.email;
+    // The AuthCredential type that was used.
+    const credential = GithubAuthProvider.credentialFromResult(result);
+  });
+  };
+
 //logout
 const logOut = ()=>{
   signOut(auth)
     .then(() => {
       // Sign-out successful.
       console.log('Sign-out successful');
-      // window.location.reload();
       setUsern(false);
 
     })
     .catch((error) => {
-      // An error happened.
       console.error('Error signing out:', error);
     });
 }
@@ -73,8 +93,13 @@ const logOut = ()=>{
     }
   });
   }, [])
+
+
   const allValues = {createUser,
-  signInUser, googleLogin, logOut, usern};
+  signInUser, googleLogin, logOut, usern, githubLogin};
+
+
+
   return (
     <AuthContext.Provider value={allValues}>
       {props.children}

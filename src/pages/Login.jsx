@@ -1,14 +1,14 @@
 import React, { useState, useContext } from 'react';
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
-import { FaGoogle, FaFacebookF } from "react-icons/fa";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link, useNavigate} from 'react-router-dom';
 import { useForm } from "react-hook-form"
 import Swal from 'sweetalert2';
 import { AuthContext } from '../FirebaseProbider/FirbaseProvider'
 export default function Login() {
     //google sign up
-    const { googleLogin } = useContext(AuthContext);
+    const { googleLogin, githubLogin } = useContext(AuthContext);
     const { signInUser } = useContext(AuthContext);
     const [formerror, setFormerror] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -50,7 +50,6 @@ export default function Login() {
                     text: error.message,
                 });
         });
-
     };
 
     return (
@@ -73,8 +72,8 @@ export default function Login() {
                 {formerror && <p className='text-red-800'> {formerror}</p>}
             </form>
             <div className='flex flex-col md:flex-row mx-auto gap-4'>
-                <button className="btn rounded-md bg-blue-300 flex items-center gap-2">
-                    <FaFacebookF /> Log In with Facebook
+                <button className="btn rounded-md bg-blue-300 flex items-center gap-2" onClick={() => githubLogin()}>
+                    <FaGithub /> Log In with Github
                 </button>
                 <button className="btn rounded-md bg-red-300  flex items-center gap-2" onClick={() => googleLogin()}>
                     <FaGoogle /> Log In with Google

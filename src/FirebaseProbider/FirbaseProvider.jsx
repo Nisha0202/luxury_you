@@ -8,11 +8,43 @@ export default function FirbaseProvider(props) {
 const googleprovider = new GoogleAuthProvider();
 
   const auth = getAuth();
-  const [usern , setUsern] = useState(null);
-
-  const createUser = (email, password)=>{
-    return createUserWithEmailAndPassword(auth, email, password)
+  const [usern , setUsern] = useState(false);
+  // const createUser = async (email, password, username, image) => {
+  //   try {
+  //     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  //     // Signed in 
+  //     const user = userCredential.user;
+  //     await user.updateProfile({
+  //       displayName: username,
+  //       photoURL: image
+  //     });
+  //     // Now the profile has been updated, and you can access the new photo URL.
+  //     console.log(user.photoURL);
+  //   } catch (error) {
+  //     const errorCode = error.code;
+  //     const errorMessage = error.message;
+  //     console.log(errorMessage, errorCode);
+  //   }
+  // }
+  const createUser = async (email, password, username, image) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      // Signed in 
+      const user = userCredential.user;
+      await user.updateProfile({
+        displayName: username,
+        photoURL: image
+      });
+      // Now the profile has been updated, and you can access the new photo URL.
+      console.log(user.photoURL);
+      setUsern(user); // Set the usern state with the updated user object
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage, errorCode);
+    }
   }
+  
 
   const signInUser = (email, password) =>{
     signInWithEmailAndPassword(auth, email, password)
@@ -45,7 +77,9 @@ const logOut = ()=>{
     .then(() => {
       // Sign-out successful.
       console.log('Sign-out successful');
-      window.location.reload();
+      // window.location.reload();
+      setUsern(false);
+
     })
     .catch((error) => {
       // An error happened.
@@ -64,7 +98,6 @@ const logOut = ()=>{
   });
 
   }, [])
-
 
   const allValues = {createUser,
   signInUser, googleLogin, logOut, usern};

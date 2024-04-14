@@ -1,7 +1,6 @@
 import React, { useState, useRef, useContext } from 'react';
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
-import { FaGoogle, FaFacebookF } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlinePhotoLibrary } from "react-icons/md";
@@ -16,28 +15,18 @@ export default function SignUp() {
     const { createUser } = useContext(AuthContext);
     const [formerror, setFormerror] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const {
-        register,
-        handleSubmit,
-        watch,
-        reset,
-        formState: { errors },
-    } = useForm();
-   
-    console.log(watch("username")) // watch input value by passing the name of it
+    const {register, handleSubmit, reset,  formState: { errors }, } = useForm();
     const onSubmit = (data) => {
         const { email, pass, username, image} = data;
-         createUser(email, pass);
+         createUser(email, pass, username, image);
         // Check password conditions
         const hasUppercase = pass.toLowerCase() !== pass;
         const hasLowercase = pass.toUpperCase() !== pass;
         const hasMinLength = pass.length >= 6;
-
         if (!hasUppercase || !hasLowercase || !hasMinLength) {
             setFormerror('Password must have an uppercase letter, a lowercase letter, and be at least 6 characters long');
             return;
         }
-
         createUserWithEmailAndPassword(auth, email, pass)
             .then(result => {
                 console.log('User created successfully');
@@ -48,7 +37,7 @@ export default function SignUp() {
                     timer: 1500
                 });
                 reset();
-                setFormerror(null);
+                setFormerror('');
             })
             .catch(error => {
                 console.error('Error creating user:', error.message);
@@ -60,7 +49,7 @@ export default function SignUp() {
                 });
             });
     };
-
+    
     return (
         <div className='flex flex-col items-center gap-8 py-16 px-2'>
             <form onSubmit={handleSubmit(onSubmit)} className='max-w-96 mx-auto flex flex-col items-center gap-6 inter'>

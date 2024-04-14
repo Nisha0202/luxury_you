@@ -17,22 +17,20 @@ export default function () {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li><NavLink to='/' className={({ isActive }) => (isActive ? "link-active" : "link")}>Home</NavLink></li>
-
             <li><NavLink to='' className={({ isActive }) => (isActive ? "link-active" : "link")}>Item 3</NavLink></li>
           </ul>
         </div>
         {usern ? (
-          <div className="navbar-end" onClick={logOut}>
+          <div className="navbar-end">
             <ul className="menu menu-horizontal px-1">
-              <li><NavLink to='/' className={({ isActive }) => (isActive ? "link-active" : "link")}>Update Profile</NavLink></li>
+              <li><NavLink to='' className={({ isActive }) => (isActive ? "link-active" : "link")}>Update Profile</NavLink></li>
             </ul>
             <div className="avatar">
               <div className="w-8 rounded">
-                <img src={usern.image}alt="Tailwind-CSS-Avatar-component" />
+                <img src={usern.photoURL} alt="Tailwind-CSS-Avatar-component" title={usern.displayName} />
               </div>
             </div>
-        
-            <NavLink to='' className=" px-4 py-2 font-bold btn-ghost text-indigo-700 rounded-md">Log Out</NavLink>
+            <NavLink to='' onClick={logOut} className=" px-4 py-2 font-bold btn-ghost text-indigo-700 rounded-md">Log Out</NavLink>
           </div>
         ) : (
           <div className="navbar-end">
@@ -40,7 +38,6 @@ export default function () {
           </div>
         )}
       </div>
-
     </>
 
 

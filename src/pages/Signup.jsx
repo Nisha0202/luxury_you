@@ -11,7 +11,6 @@ import { useForm} from "react-hook-form"
 import Swal from 'sweetalert2';
 
 export default function SignUp() {
-
     const { createUser } = useContext(AuthContext);
     const [formerror, setFormerror] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -49,7 +48,6 @@ export default function SignUp() {
                 });
             });
     };
-    
     return (
         <div className='flex flex-col items-center gap-8 py-16 px-2'>
             <form onSubmit={handleSubmit(onSubmit)} className='max-w-96 mx-auto flex flex-col items-center gap-6 inter'>

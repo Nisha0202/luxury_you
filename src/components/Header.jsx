@@ -3,8 +3,6 @@ import { NavLink } from 'react-router-dom'
 import { AuthContext } from '../FirebaseProbider/FirbaseProvider'
 
 export default function () {
-
-
   const { logOut, usern } = useContext(AuthContext);
 
   return (
@@ -22,7 +20,7 @@ export default function () {
         </div>
         {usern ? (
           <div className="navbar-end">
-            <ul className="menu menu-horizontal px-1">
+            <ul className="menu menu-horizontal px-1 text-sm">
               <li><NavLink to='' className={({ isActive }) => (isActive ? "link-active" : "link")}>Update Profile</NavLink></li>
             </ul>
             <div className="avatar">

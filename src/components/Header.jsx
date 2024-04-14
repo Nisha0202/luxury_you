@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { AuthContext } from '../FirebaseProbider/FirbaseProvider'
 
 export default function () {
+
+  const {logOut, usern} = useContext(AuthContext);
 
     return (
 
@@ -17,9 +20,15 @@ export default function () {
       <li><NavLink to = '' className={({ isActive }) => (isActive ? "link-active" : "link")}>Item 3</NavLink></li>
     </ul>
   </div>
-  <div className="navbar-end">
-    <NavLink to='/login' className=" px-4 py-2 font-bold btn-ghost text-indigo-700 rounded-md">Login</NavLink>
-  </div>
+  {usern ? (
+          <div className="navbar-end" onClick={logOut}>
+            <NavLink to='' className=" px-4 py-2 font-bold btn-ghost text-indigo-700 rounded-md">Log Out</NavLink>
+          </div>
+        ) : (
+          <div className="navbar-end">
+            <NavLink to='/login' className=" px-4 py-2 font-bold btn-ghost text-indigo-700 rounded-md">Log In</NavLink>
+          </div>
+        )}
 </div>
         
         </>

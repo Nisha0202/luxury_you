@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from 'react'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signInWithPopup} from "firebase/auth";
 export const AuthContext = createContext(null);
 import { GoogleAuthProvider } from "firebase/auth";
+import { signOut } from "firebase/auth";
 
 export default function FirbaseProvider(props) {
 const googleprovider = new GoogleAuthProvider();
@@ -39,7 +40,15 @@ const googleprovider = new GoogleAuthProvider();
 
 //logout
 const logOut = ()=>{
-  signOut(auth);
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+      console.log('Sign-out successful');
+    })
+    .catch((error) => {
+      // An error happened.
+      console.error('Error signing out:', error);
+    });
 }
   //obserer
   useEffect( ()=>{

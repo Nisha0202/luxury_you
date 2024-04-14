@@ -5,8 +5,6 @@ import { FaGoogle, FaFacebookF } from "react-icons/fa";
 import { Link, useNavigate} from 'react-router-dom';
 import { useForm } from "react-hook-form"
 import Swal from 'sweetalert2';
-import auth from '../firebase/firebase.config';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { AuthContext } from '../FirebaseProbider/FirbaseProvider'
 
 export default function Login() {
@@ -25,13 +23,19 @@ export default function Login() {
     } = useForm();
     const navigate = useNavigate();
     const onSubmit = (data) => {
-        const { email, pass } = data;
-        signInUser(email, pass);
-        console.log(email, pass);
+        const { email, pass } = data;     
+        const signIn = async (email, pass) => {
+            try {
+                const result = await signInUser(email, pass);
+                return result;
+            } catch (error) {
+                console.error('Error in signIn:', error);
+                throw error; // This allows onSubmit to catch the error
+            }
+        };
 
-        signInWithEmailAndPassword(auth, email, pass)
-            .then(result => {
-                console.log('Login successful');
+        signIn(email, pass).then(() => {
+            console.log('Login successful');
                 Swal.fire({
                     icon: 'success',
                     title: 'Login successful',
@@ -40,16 +44,42 @@ export default function Login() {
                 });   
                 reset(); 
                 navigate('/');
-            })
-            .catch(error => {
-                console.error('Error creating user:', error.message);
+        }).catch((error) => {
+            console.error('Error creating user:', error.message);
                 setFormerror(error.message);
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: error.message,
                 });
-            });
+        });
+
+
+
+
+
+
+        // signInWithEmailAndPassword(auth, email, pass)
+        //     .then(result => {
+        //         console.log('Login successful');
+        //         Swal.fire({
+        //             icon: 'success',
+        //             title: 'Login successful',
+        //             showConfirmButton: false,
+        //             timer: 1500
+        //         });   
+        //         reset(); 
+        //         navigate('/');
+        //     })
+        //     .catch(error => {
+        //         console.error('Error creating user:', error.message);
+        //         setFormerror(error.message);
+        //         Swal.fire({
+        //             icon: 'error',
+        //             title: 'Oops...',
+        //             text: error.message,
+        //         });
+        //     });
 
     };
 

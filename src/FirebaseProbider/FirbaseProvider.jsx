@@ -4,11 +4,10 @@ export const AuthContext = createContext(null);
 import { GoogleAuthProvider,  updateProfile } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import { reload } from "firebase/auth";
+import auth from '../firebase/firebase.config';
 
 export default function FirbaseProvider(props) {
 const googleprovider = new GoogleAuthProvider();
-
-  const auth = getAuth();
   const [usern , setUsern] = useState(false);
 
   const createUser = async (email, password, username, image) => {
@@ -69,13 +68,12 @@ const logOut = ()=>{
   useEffect( ()=>{
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      setUsern(user);
-      
+      console.log(user);   
+      setUsern(usern);
     } else {
       console.log("error");
     }
   });
-
   }, [])
 
   const allValues = {createUser,

@@ -1,12 +1,9 @@
 import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { AuthContext } from '../FirebaseProbider/FirbaseProvider'
-
 export default function () {
   const { logOut, usern } = useContext(AuthContext);
-
   return (
-
     <>
       <div className="navbar bg-base-100 px-4 lg:px-0 py-6">
         <div className="navbar-start">
@@ -37,8 +34,5 @@ export default function () {
         )}
       </div>
     </>
-
-
-
   )
 }

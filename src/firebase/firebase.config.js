@@ -1,7 +1,6 @@
 //// export default app;
-import { getAuth } from "firebase/auth"; 
 import { initializeApp } from "firebase/app";
-
+import { getAuth } from "firebase/auth"; 
 const firebaseConfig = {
   apiKey: "AIzaSyAaDDpsg_KTe9uBXXfGH4C4NzA8A05tJlk",
   authDomain: "ph-project8.firebaseapp.com",
@@ -18,3 +17,4 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 export default auth;
+

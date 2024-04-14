@@ -1,16 +1,15 @@
 import React, { useState, useRef, useContext } from 'react';
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlinePhotoLibrary } from "react-icons/md";
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import auth from '../firebase/firebase.config';
 import { AuthContext } from '../FirebaseProbider/FirbaseProvider'
 import { useForm} from "react-hook-form"
 import Swal from 'sweetalert2';
 
 export default function SignUp() {
+    const navigate = useNavigate();
     const { createUser } = useContext(AuthContext);
     const [formerror, setFormerror] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -36,6 +35,7 @@ export default function SignUp() {
             });
             reset();
             setFormerror('');
+            navigate('/login');
         }).catch(error => {
                 console.error('Error creating user:', error.message);
                 setFormerror(error.message);

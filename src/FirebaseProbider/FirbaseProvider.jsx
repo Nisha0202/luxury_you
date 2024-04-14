@@ -23,7 +23,8 @@ const googleprovider = new GoogleAuthProvider();
     signInWithPopup(auth, googleprovider)
   .then((result) => {
     // The signed-in user info.
-    const user = result.user;
+    // const user = result.user;
+    setUsern(result.user);
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const accessToken = credential.accessToken;
 

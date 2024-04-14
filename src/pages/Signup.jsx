@@ -13,8 +13,6 @@ import Swal from 'sweetalert2';
 
 export default function SignUp() {
 
-
-
     const { createUser } = useContext(AuthContext);
     const [formerror, setFormerror] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -92,14 +90,6 @@ export default function SignUp() {
                 <button type='submit' className="btn w-full rounded-md text-white bg-indigo-700 font-bold">Register</button>
                 {formerror && <p className='text-xs font-bold max-w-xs text-wrap text-red-600'> {formerror}!</p>}
             </form>
-            {/* <div className='flex flex-col md:flex-row mx-auto gap-4'>
-                <button className="btn rounded-md bg-blue-300 flex items-center gap-2">
-                    <FaFacebookF /> Join with Facebook
-                </button>
-                <button className="btn rounded-md bg-red-300  flex items-center gap-2" >
-                    <FaGoogle /> Join with Google
-                </button>
-            </div> */}
             <div>Already joined? <Link to={'/login'} className='text-indigo-700'>Log In</Link></div>
         </div>
     )

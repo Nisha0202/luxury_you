@@ -37,8 +37,7 @@ export default function Login() {
                     title: 'Login successful',
                     showConfirmButton: false,
                     timer: 1500
-                });
-               
+                });   
                 reset(); 
                 navigate('/');
             })

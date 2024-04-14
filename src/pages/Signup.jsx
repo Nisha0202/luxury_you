@@ -17,7 +17,6 @@ export default function SignUp() {
     const {register, handleSubmit, reset,  formState: { errors }, } = useForm();
     const onSubmit = (data) => {
         const { email, pass, username, image} = data;
-         createUser(email, pass, username, image);
         // Check password conditions
         const hasUppercase = pass.toLowerCase() !== pass;
         const hasLowercase = pass.toUpperCase() !== pass;
@@ -26,19 +25,18 @@ export default function SignUp() {
             setFormerror('Password must have an uppercase letter, a lowercase letter, and be at least 6 characters long');
             return;
         }
-        createUserWithEmailAndPassword(auth, email, pass)
-            .then(result => {
-                console.log('User created successfully');
-                Swal.fire({
-                    icon: 'success',
-                    title: 'User created successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                reset();
-                setFormerror('');
-            })
-            .catch(error => {
+        createUser(email, pass, username, image)
+        .then(() => {
+            console.log('User created successfully');
+            Swal.fire({
+                icon: 'success',
+                title: 'User created successfully',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            reset();
+            setFormerror('');
+        }).catch(error => {
                 console.error('Error creating user:', error.message);
                 setFormerror(error.message);
                 Swal.fire({

@@ -13,6 +13,7 @@ export default function UpdateData() {
     const navigate = useNavigate();
     const { updateData, usern } = useContext(AuthContext);
     const {register, handleSubmit, reset,  formState: { errors }, } = useForm();
+
     const onSubmit = (data) => {
         const { username, image} = data;
         updateData( username, image)
@@ -24,7 +25,6 @@ export default function UpdateData() {
                 showConfirmButton: false,
                 timer: 1500
             });
-            reset();
             navigate('/');
         }).catch(error => {
                 console.error('Error creating user:', error.message);

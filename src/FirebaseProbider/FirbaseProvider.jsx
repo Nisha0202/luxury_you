@@ -23,7 +23,7 @@ export default function FirbaseProvider(props) {
         photoURL: image
       });
       const updatedUser = await reload(user);
-      setUsern(updatedUser); // Set the usern state with the updated user object
+      setUsern(updatedUser); // usern state with the updated user object
       console.log(updatedUser);
     } catch (error) {
       const errorCode = error.code;
@@ -36,13 +36,26 @@ export default function FirbaseProvider(props) {
   }
 
   //update user
-  const updateData = (username, image) => {
-    return updateProfile(auth.currentUser, {
-      displayName: username,
-      photoURL: image
-    })
-
-  }
+  const updateData = async (username, image) => {
+    try {
+      const user = auth.currentUser;
+      if (user) {
+        await updateProfile(user, {
+          displayName: username,
+          photoURL: image
+        });
+        const updatedUser = auth.currentUser;
+        setUsern(updatedUser);
+        console.log(updatedUser);
+       
+      } 
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage, errorCode);
+    }
+  };
+  
 
 
   //google

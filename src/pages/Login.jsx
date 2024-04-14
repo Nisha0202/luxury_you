@@ -8,8 +8,13 @@ import Swal from 'sweetalert2';
 import auth from '../firebase/firebase.config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { AuthContext } from '../FirebaseProbider/FirbaseProvider'
+
 export default function Login() {
-    const { signInUser} = useContext(AuthContext);
+
+    //google sign up
+    const { googleLogin } = useContext(AuthContext);
+
+    const { signInUser } = useContext(AuthContext);
     const [formerror, setFormerror] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const {
@@ -70,7 +75,7 @@ export default function Login() {
                 <button className="btn rounded-md bg-blue-300 flex items-center gap-2">
                     <FaFacebookF /> Log In with Facebook
                 </button>
-                <button className="btn rounded-md bg-red-300  flex items-center gap-2">
+                <button className="btn rounded-md bg-red-300  flex items-center gap-2" onClick={() => googleLogin()}>
                     <FaGoogle /> Log In with Google
                 </button>
             </div>

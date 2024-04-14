@@ -1,7 +1,11 @@
 import React, { createContext, useEffect, useState } from 'react'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signInWithPopup} from "firebase/auth";
 export const AuthContext = createContext(null);
+import { GoogleAuthProvider } from "firebase/auth";
+
 export default function FirbaseProvider(props) {
+const googleprovider = new GoogleAuthProvider();
+
   const auth = getAuth();
   const [usern , setUsern] = useState(null);
 
@@ -11,9 +15,32 @@ export default function FirbaseProvider(props) {
 
   const signInUser = (email, password) =>{
     signInWithEmailAndPassword(auth, email, password)
-
   }
 
+  //google
+  const googleLogin=()=>{
+    signInWithPopup(auth, googleprovider)
+  .then((result) => {
+    // The signed-in user info.
+    const user = result.user;
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const accessToken = credential.accessToken;
+
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+  });
+  };
+
+//logout
+const logOut = ()=>{
+  signOut(auth);
+}
   //obserer
   useEffect( ()=>{
   onAuthStateChanged(auth, (user) => {
@@ -28,15 +55,9 @@ export default function FirbaseProvider(props) {
   }, [])
 
 
-
-
-
-
-
-  
-
   const allValues = {createUser,
-  signInUser};
+  signInUser, googleLogin, logOut, usern};
+
   return (
     <AuthContext.Provider value={allValues}>
       {props.children}

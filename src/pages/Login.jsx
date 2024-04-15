@@ -54,7 +54,7 @@ export default function Login() {
     };
 
     return (
-        <div className='flex flex-col items-center gap-8 py-16 px-2'>/
+        <div className='flex flex-col items-center gap-8 py-16 px-2'>
          <Helmet>
         <title>Luxury You - Login</title>
       </Helmet>

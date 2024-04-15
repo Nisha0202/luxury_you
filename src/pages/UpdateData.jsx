@@ -37,8 +37,6 @@ export default function UpdateData() {
                 });
             });
     };
-
-
   return (
     <div>
          <Helmet>

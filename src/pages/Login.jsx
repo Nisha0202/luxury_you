@@ -6,6 +6,7 @@ import { Link, useNavigate} from 'react-router-dom';
 import { useForm } from "react-hook-form"
 import Swal from 'sweetalert2';
 import { AuthContext } from '../FirebaseProbider/FirbaseProvider'
+import { Helmet } from 'react-helmet';
 export default function Login() {
     //google sign up
     const { googleLogin, githubLogin } = useContext(AuthContext);
@@ -53,7 +54,10 @@ export default function Login() {
     };
 
     return (
-        <div className='flex flex-col items-center gap-8 py-16 px-2'>
+        <div className='flex flex-col items-center gap-8 py-16 px-2'>/
+         <Helmet>
+        <title>Luxury You - Login</title>
+      </Helmet>
             <form onSubmit={handleSubmit(onSubmit)} className='max-w-96 mx-auto flex flex-col gap-6  inter'>
                 <label className="input input-bordered flex items-center gap-2 text-gray-600">
                     <AiOutlineMail />

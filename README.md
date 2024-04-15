@@ -8,3 +8,4 @@
 8. react-icon
 9. sweet-alert
 10. react-hook-form
+11. react-helmet

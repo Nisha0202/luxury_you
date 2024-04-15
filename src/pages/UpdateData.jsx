@@ -7,6 +7,7 @@ import { MdOutlinePhotoLibrary } from "react-icons/md";
 import { AuthContext } from '../FirebaseProbider/FirbaseProvider'
 import { useForm} from "react-hook-form"
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 export default function UpdateData() {
     const [formError, setFormError] = useState(null);
@@ -40,6 +41,9 @@ export default function UpdateData() {
 
   return (
     <div>
+         <Helmet>
+        <title>Luxury You - Update Data</title>
+      </Helmet>
         <div className='flex flex-col items-center gap-8 py-16 px-2'>
             <form onSubmit={handleSubmit(onSubmit)} className='max-w-96 mx-auto flex flex-col items-center gap-6 inter'>
                 <label className="input input-bordered flex items-center gap-2 text-gray-600 w-full">

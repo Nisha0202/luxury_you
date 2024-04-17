@@ -12,6 +12,7 @@ export default function FirbaseProvider(props) {
   const githubprovider = new GithubAuthProvider();
 
   const [usern, setUsern] = useState(false);
+
   const createUser = (email, password, username, image) => {
     return new Promise(async (resolve, reject) => {
       try {
@@ -22,7 +23,6 @@ export default function FirbaseProvider(props) {
           displayName: username,
           photoURL: image
         });
-        await user.reload(); 
         const updatedUser = await user.reload(); ;
         setUsern(updatedUser); 
        
@@ -35,17 +35,31 @@ export default function FirbaseProvider(props) {
   };
   //454545As
   
-  const signInUser = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        setUsern(user); // Update usern state with the signed-in user's information
-      })
-      .catch((error) => {
-        console.error('Error signing in:', error);
-      });
+  // const signInUser = (email, password) => {
+  //   signInWithEmailAndPassword(auth, email, password)
+  //     .then((userCredential) => {
+  //       // Signed in
+  //       const user = userCredential.user;
+  //       setUsern(user);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error signing in:', error);
+  //     });
+  // };
+
+  const signInUser = async (email, password) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      // Signed in
+      const user = userCredential.user;
+      setUsern(user); // Update usern state with the signed-in user's information
+    } catch (error) {
+      console.error('Error signing in:', error);
+      throw error; // Throw the error so it can be caught in onSubmit
+    }
   };
+  
+
   //update user
   const updateData = async (username, image) => {
     try {
@@ -55,6 +69,7 @@ export default function FirbaseProvider(props) {
           displayName: username,
           photoURL: image
         });
+        await user.reload(); 
         const updatedUser = auth.currentUser;
         setUsern(updatedUser);
         console.log(updatedUser);

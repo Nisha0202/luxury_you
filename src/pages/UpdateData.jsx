@@ -60,7 +60,6 @@ export default function UpdateData() {
                     <input type="text" className="grow" placeholder="Photo URL" name='photo'  defaultValue={usern.photoURL} 
                         {...register("image", { required: false })}/>
                 </label>
-          
                 <button type='submit' className="btn w-full rounded-md text-white bg-indigo-700 font-bold">Update</button>
             </form>
             {formError && <p className='text-xs text-red-500'>{formError}</p>}

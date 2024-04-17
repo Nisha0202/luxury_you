@@ -13,25 +13,6 @@ export default function FirbaseProvider(props) {
 
   const [usern, setUsern] = useState(false);
 
-  // const createUser = async (email, password, username, image) => {
-  //   try {
-  //     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-  //     // Signed in 
-  //     const user = userCredential.user;
-  //     await updateProfile(user, {
-  //       displayName: username,
-  //       photoURL: image
-  //     });
-  //     const updatedUser = await reload(user);
-  //     setUsern(updatedUser); // usern state with the updated user object
-  //     console.log(updatedUser);
-  //   } catch (error) {
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //     console.log(errorMessage, errorCode);
-  //   }
-  // }
-
   const createUser = (email, password, username, image) => {
     return new Promise(async (resolve, reject) => {
       try {
@@ -54,9 +35,6 @@ export default function FirbaseProvider(props) {
   };
   //454545As
   
-  // const signInUser = (email, password) => {
-  //   signInWithEmailAndPassword(auth, email, password)
-  // }
   const signInUser = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -149,7 +127,7 @@ export default function FirbaseProvider(props) {
       }
     });
   }, [])
-  //123456tY
+
   const allValues = {
     createUser,
     signInUser, googleLogin, logOut, usern, githubLogin,

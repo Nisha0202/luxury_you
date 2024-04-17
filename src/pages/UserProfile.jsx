@@ -10,9 +10,9 @@ export default function UserProfile() {
       <title>Luxury You - User Profile</title>
     </Helmet>
 
-    <div className='min-h-40 text-center py-16'>
-      <img src={usern.photoURL} className='text-xl font-bold'/>
-      <p className='text-indigo-700 md:text-2xl text-xl text-center font-bold animate__animated animate__flash'>{usern.displayName} </p>
+    <div className='min-h-40 text-center py-16 flex flex-col items-center gap-4'>
+      <img src={usern.photoURL} className='w-20 h-20'/>
+      <p className='text-indigo-700 md:text-xl text-base text-center font-bold animate__animated animate__flash'>{usern.displayName} </p>
     </div>
     
   </div>

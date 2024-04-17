@@ -1,6 +1,6 @@
 ## LUXURY YOU
 
-# It is Book reviewing website featuring-
+# It is a website with luxurious collections of estates featuring-
 1. Estates
 2. Estate Details
 3. Sign up and login

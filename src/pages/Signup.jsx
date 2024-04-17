@@ -46,7 +46,21 @@ export default function SignUp() {
                     text: error.message,
                 });
             });
+
+    
     };
+
+   
+
+
+
+
+
+
+
+
+
+
     return (
         <div className='flex flex-col items-center gap-8 py-16 px-2'>
              <Helmet>
@@ -79,6 +93,7 @@ export default function SignUp() {
                 <button type='submit' className="btn w-full rounded-md text-white bg-indigo-700 font-bold">Register</button>
                 {formerror && <p className='text-xs font-bold max-w-xs text-wrap text-red-600'> {formerror}!</p>}
             </form>
+            <p className='text-sm'>After regesiter you have to login tp proceed.</p>
             <div>Already joined? <Link to={'/login'} className='text-indigo-700'>Log In</Link></div>
         </div>
     )

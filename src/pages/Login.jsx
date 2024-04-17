@@ -31,7 +31,6 @@ export default function Login() {
                 throw error; 
             }
         };
-
         signIn(email, pass).then(() => {
             console.log('Login successful');
                 Swal.fire({

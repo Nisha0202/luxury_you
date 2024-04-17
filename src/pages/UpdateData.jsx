@@ -3,7 +3,7 @@ import React, { useState, useRef, useContext } from 'react';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { FaRegUser } from "react-icons/fa";
-import { MdOutlinePhotoLibrary } from "react-icons/md";
+import { MdMail, MdOutlinePhotoLibrary } from "react-icons/md";
 import { AuthContext } from '../FirebaseProbider/FirbaseProvider'
 import { useForm} from "react-hook-form"
 import Swal from 'sweetalert2';
@@ -50,6 +50,11 @@ export default function UpdateData() {
                      {...register("username", { required: true })} />
                       {errors.username && <span className='text-xs text-red-500'>required field</span>}
                 </label>
+                <label className="input input-bordered flex items-center gap-2 text-gray-600 w-full">
+                    <MdMail />
+                    <input type="text" className="grow" placeholder="Name" name='username'  defaultValue={usern.email} readOnly/>
+                </label>
+
                 <label className="input input-bordered flex items-center gap-2 text-gray-600 w-full">
                     <MdOutlinePhotoLibrary />
                     <input type="text" className="grow" placeholder="Photo URL" name='photo'  defaultValue={usern.photoURL} 

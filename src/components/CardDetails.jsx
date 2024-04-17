@@ -1,20 +1,21 @@
 import React from 'react'
 import { useState } from 'react';
-import { Helmet } from 'react-helmet';
 import { useLoaderData, useParams } from 'react-router-dom'
 export default function CardDetails() {
+    
     const estates = useLoaderData();
     const { id } = useParams();
     const estate = estates.find(estate => estate.id === id);
+    console.log(estate);
+    if (!estate) {
+        // Handle the case where estate is undefined
+        return <div>No estate found with id {id}</div>;
+      }
+      
 
     return (
-        <div className='py-6 border-2 rounded-md px-2 lg:px-6'>
-            <Helmet>
-        <title>Estate Details</title>
-      </Helmet>
+        <div className='py-6 border-2 rounded-md px-2 lg:px-6 mb-3'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 h-full'>
-               
-
                 {/* details */}
                 <div className='w-full'>
                     <div className="flex flex-col w-full gap-2">
@@ -29,7 +30,6 @@ export default function CardDetails() {
                                     <span key={index} className="bg-gray-200 rounded-md px-3 py-2 text-sm text-indigo-700">#{facility}</span>
                                 ))}
                             </div>
-
                             <table className='max-w-60 text-xs h-32'>
                                 <tbody className='text-left'>
                                     <tr >

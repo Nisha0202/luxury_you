@@ -27,6 +27,13 @@ export default function UpdateData() {
                 timer: 1500
             });
             navigate('/');
+
+            setTimeout(() => {
+                window.location.reload();
+              }, 2000);
+            
+            
+
         }).catch(error => {
                 console.error('Error creating user:', error.message);
                 setFormError(error.message);
@@ -52,7 +59,7 @@ export default function UpdateData() {
                 </label>
                 <label className="input input-bordered flex items-center gap-2 text-gray-600 w-full">
                     <MdMail />
-                    <input type="text" className="grow" placeholder="Name" name='username'  defaultValue={usern.email} readOnly/>
+                    <input type="text" className="grow" placeholder="Email" name='username'  defaultValue={usern.email} readOnly/>
                 </label>
 
                 <label className="input input-bordered flex items-center gap-2 text-gray-600 w-full">

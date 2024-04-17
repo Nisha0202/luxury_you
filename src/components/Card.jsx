@@ -22,7 +22,9 @@ const navigate = useNavigate();
   const handleViewProperty = () => {
     if (usern) {
       // If usern exists, redirect to /property_details/id
-      navigate('/property_details/${estate.id}');
+      // navigate('/property_details/${estate.id}');
+      navigate(`/property_details/${estate.id}`);
+
     } else {
       // If usern does not exist, redirect to /login
       navigate('/login');

@@ -25,8 +25,8 @@ export default function FirbaseProvider(props) {
         });
         const updatedUser = await user.reload(); ;
         setUsern(updatedUser); 
-       
         resolve(updatedUser); 
+        reload(usern);
       } catch (error) {
         console.log(error.message, error.code);
         reject(error); 
@@ -58,10 +58,11 @@ export default function FirbaseProvider(props) {
           displayName: username,
           photoURL: image
         });
+      
         await user.reload(); 
         const updatedUser = auth.currentUser;
         setUsern(updatedUser);
-        console.log(updatedUser);
+       reload(usern);
        
       } 
     } catch (error) {

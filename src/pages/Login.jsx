@@ -82,6 +82,7 @@ export default function Login() {
                     <FaGoogle /> Log In with Google
                 </button>
             </div>
+            <div>If you have already registered, please login.</div>
             <div>New to join? <Link to={'/signup'} className='text-indigo-700'>Register</Link></div>
         </div>
     )

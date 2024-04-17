@@ -24,12 +24,12 @@ export default function () {
             <ul className="menu menu-horizontal px-1 md:text-sm text-xs">
               <li><NavLink to='/update' className={({ isActive }) => (isActive ? "link-active" : "link")}>Update Profile</NavLink></li>
             </ul>
-            <div className="avatar">
+            <div className="avatar border-2">
               <NavLink to='/user' className="w-8 rounded">
                 <img className='object-contain' src={usern.photoURL} alt="user" title={usern.displayName} />
               </NavLink>
             </div>
-            <NavLink to='' onClick={logOut} className="text-sm md:text-base px-4 py-2 font-bold btn-ghost text-indigo-700 rounded-md">Log Out</NavLink>
+            <NavLink to='' onClick={logOut} className="ml-2 text-sm md:text-base px-4 py-2 font-bold btn-ghost text-indigo-700 rounded-md">Log Out</NavLink>
           </div>
         ) : (
           <div className="navbar-end">

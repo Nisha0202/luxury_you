@@ -14,7 +14,7 @@ export default function Home() {
 
       <div className='min-h-40 text-center py-16'>
         <h1 className='text-xl font-bold'>Welcome to</h1>
-        <p className='text-indigo-700 text-3xl font-bold animate__animated animate__flash'>Luxury You</p>
+        <p className='text-indigo-700 text-xl lg:text-3xl font-bold animate__animated animate__flash'>Luxury You</p>
       </div>
       <Estate />
     </div>

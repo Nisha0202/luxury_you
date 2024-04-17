@@ -15,6 +15,7 @@ import Contact from './pages/Contact'
 import About from './pages/About';
 import FirbaseProvider from './FirebaseProbider/FirbaseProvider';
 import UpdateData from './pages/UpdateData';
+import UserProfile from './pages/UserProfile'
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/update",
         element: <UpdateData/>,
+      },
+      {
+        path: "/userp",
+        element: <UserProfile/>,
       },
     ],
   },

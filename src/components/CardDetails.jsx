@@ -8,6 +8,9 @@ export default function CardDetails() {
 
     return (
         <div className='py-6 border-2 rounded-md px-2 lg:px-6'>
+            <Helmet>
+        <title>Estate Details</title>
+      </Helmet>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 h-full'>
                
 

@@ -5,7 +5,7 @@ export default function () {
   const { logOut, usern } = useContext(AuthContext);
   return (
     <>
-      <div className="navbar bg-base-100 px-4 lg:px-0 py-6 flex ">
+      <div className="navbar bg-base-100 px-4 lg:px-0 py-6 flex">
         <div className="md:navbar-start">
           <a href='/' className="text-sm md:text-xl inter text-indigo-700 font-bold">Luxury You</a>
         </div>
@@ -23,9 +23,9 @@ export default function () {
               <li><NavLink to='/update' className={({ isActive }) => (isActive ? "link-active" : "link")}>Update Profile</NavLink></li>
             </ul>
             <div className="avatar">
-              <div className="w-8 rounded">
+              <NavLink to='/userp' className="w-8 rounded">
                 <img src={usern.photoURL} alt="Tailwind-CSS-Avatar-component" title={usern.displayName} />
-              </div>
+              </NavLink>
             </div>
             <NavLink to='' onClick={logOut} className=" px-4 py-2 font-bold btn-ghost text-indigo-700 rounded-md">Log Out</NavLink>
           </div>

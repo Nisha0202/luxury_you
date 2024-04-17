@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { Link, useRouteError } from "react-router-dom";
 
 export default function ErrorPage() {
@@ -6,6 +7,9 @@ export default function ErrorPage() {
 
   return (
     <div id="error-page" className="container lexend">
+        <Helmet>
+      <title>Page Not Found</title>
+    </Helmet>
       <h1 className="text-3xl font-bold">404 Not Found</h1>
       <p>Sorry, an unexpected error has occurred.</p>
       <p>

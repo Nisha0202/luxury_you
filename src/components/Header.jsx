@@ -26,7 +26,7 @@ export default function () {
             </ul>
             <div className="avatar">
               <NavLink to='/user' className="w-8 rounded">
-                <img src={usern.photoURL} alt="user" title={usern.displayName} />
+                <img className='object-contain' src={usern.photoURL} alt="user" title={usern.displayName} />
               </NavLink>
             </div>
             <NavLink to='' onClick={logOut} className="text-sm md:text-base px-4 py-2 font-bold btn-ghost text-indigo-700 rounded-md">Log Out</NavLink>

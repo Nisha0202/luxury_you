@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useLoaderData, useParams } from 'react-router-dom'
 export default function CardDetails() {
     const estates = useLoaderData();

@@ -29,23 +29,12 @@ export default function FirbaseProvider(props) {
         resolve(updatedUser); 
       } catch (error) {
         console.log(error.message, error.code);
-        reject(error); // Reject the promise with the error
+        reject(error); 
       }
     });
   };
   //454545As
-  
-  // const signInUser = (email, password) => {
-  //   signInWithEmailAndPassword(auth, email, password)
-  //     .then((userCredential) => {
-  //       // Signed in
-  //       const user = userCredential.user;
-  //       setUsern(user);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error signing in:', error);
-  //     });
-  // };
+
 
   const signInUser = async (email, password) => {
     try {
@@ -82,6 +71,8 @@ export default function FirbaseProvider(props) {
     }
   };
   //google
+
+
   const googleLogin = () => {
     signInWithPopup(auth, googleprovider)
       .then((result) => {
@@ -94,11 +85,9 @@ export default function FirbaseProvider(props) {
         const errorMessage = error.message;
         // The email of the user's account used.
         const email = error.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
       });
   };
-
+  
   // github
   const githubLogin = () => {
     signInWithPopup(auth, githubprovider)
@@ -112,8 +101,7 @@ export default function FirbaseProvider(props) {
         const errorMessage = error.message;
         // The email of the user's account used.
         const email = error.email;
-        // The AuthCredential type that was used.
-        const credential = GithubAuthProvider.credentialFromResult(result);
+  
       });
   };
 

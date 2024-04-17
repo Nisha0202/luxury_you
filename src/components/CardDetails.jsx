@@ -8,7 +8,7 @@ export default function CardDetails() {
     const estate = estates.find(estate => estate.id === id);
     console.log(estate);
     if (!estate) {
-        // Handle the case where estate is undefined
+        
         return <div>No estate found with id {id}</div>;
       }
       

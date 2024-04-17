@@ -33,18 +33,16 @@ export default function FirbaseProvider(props) {
       }
     });
   };
-  //454545As
-
 
   const signInUser = async (email, password) => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       // Signed in
       const user = userCredential.user;
-      setUsern(user); // Update usern state with the signed-in user's information
+      setUsern(user); // Update usern state
     } catch (error) {
       console.error('Error signing in:', error);
-      throw error; // Throw the error so it can be caught in onSubmit
+      throw error; 
     }
   };
   

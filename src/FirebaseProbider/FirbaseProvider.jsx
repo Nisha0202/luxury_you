@@ -12,7 +12,6 @@ export default function FirbaseProvider(props) {
   const githubprovider = new GithubAuthProvider();
 
   const [usern, setUsern] = useState(false);
-
   const createUser = (email, password, username, image) => {
     return new Promise(async (resolve, reject) => {
       try {
@@ -23,10 +22,11 @@ export default function FirbaseProvider(props) {
           displayName: username,
           photoURL: image
         });
-        const updatedUser = await reload(user);
-        setUsern(updatedUser); // usern state with the updated user object
-        console.log(updatedUser);
-        resolve(updatedUser); // Resolve the promise with the updated user object
+        await user.reload(); 
+        const updatedUser = await user.reload(); ;
+        setUsern(updatedUser); 
+       
+        resolve(updatedUser); 
       } catch (error) {
         console.log(error.message, error.code);
         reject(error); // Reject the promise with the error
@@ -46,8 +46,6 @@ export default function FirbaseProvider(props) {
         console.error('Error signing in:', error);
       });
   };
-  
-
   //update user
   const updateData = async (username, image) => {
     try {
@@ -127,6 +125,7 @@ export default function FirbaseProvider(props) {
       }
     });
   }, [])
+
 
   const allValues = {
     createUser,

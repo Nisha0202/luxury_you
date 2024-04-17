@@ -16,6 +16,7 @@ import About from './pages/About';
 import FirbaseProvider from './FirebaseProbider/FirbaseProvider';
 import UpdateData from './pages/UpdateData';
 import UserProfile from './pages/UserProfile'
+import Clients from './pages/Clients'
 
 const router = createBrowserRouter([
   {
@@ -53,8 +54,12 @@ const router = createBrowserRouter([
         element: <UpdateData/>,
       },
       {
-        path: "/userp",
+        path: "/user",
         element: <UserProfile/>,
+      },
+      {
+        path: "/clients",
+        element: <Clients/>,
       },
     ],
   },

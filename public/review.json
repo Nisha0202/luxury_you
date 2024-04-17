@@ -1,0 +1,30 @@
+[
+    {
+        "reviewId": 1,
+        "author": "John Doe",
+        "rating": 5,
+        "date": "2024-04-16",
+        "comment": "Luxury You provided an exceptional experience. The penthouse I rented had a breathtaking view and top-notch amenities. Highly recommend their services!"
+    },
+    {
+        "reviewId": 2,
+        "author": "Jane Smith",
+        "rating": 4,
+        "date": "2024-03-12",
+        "comment": "I purchased a villa through Luxury You and was impressed by their attention to detail and professionalism. They made the buying process seamless."
+    },
+    {
+        "reviewId": 3,
+        "author": "Alex Johnson",
+        "rating": 5,
+        "date": "2024-02-09",
+        "comment": "The resort options offered by Luxury You are simply unmatched. Their exclusive properties and personalized service are what make them stand out."
+    },
+    {
+        "reviewId": 4,
+        "author": "Samantha Lee",
+        "rating": 4,
+        "date": "2024-01-20",
+        "comment": "Renting a mansion for our corporate retreat was a breeze with Luxury You. The property was stunning and fit our needs perfectly."
+    }
+]

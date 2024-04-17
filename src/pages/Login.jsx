@@ -28,7 +28,7 @@ export default function Login() {
                 return result;
             } catch (error) {
                 console.error('Error in signIn:', error);
-                throw error; // This allows onSubmit to catch the error
+                throw error; 
             }
         };
 
@@ -43,12 +43,12 @@ export default function Login() {
                 reset(); 
                 navigate('/');
         }).catch((error) => {
-            console.error('Error creating user:', error.message);
+            console.error('Error during login:', error.message);
                 setFormerror(error.message);
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: error.message,
+                    text: 'Invalid email or password.',
                 });
         });
     };
@@ -72,8 +72,8 @@ export default function Login() {
                     {errors.pass && <span className='text-xs text-red-500'>required field</span>}
                 </label>
                 <button type='submit' className="btn rounded-md text-white bg-indigo-700 font-bold">Log In</button>
-
-                {formerror && <p className='text-red-800'> {formerror}</p>}
+{/* 
+                {formerror && <p className='text-red-800'> {formerror}</p>} */}
             </form>
             <div className='flex flex-col md:flex-row mx-auto gap-4'>
                 <button className="btn rounded-md bg-blue-300 flex items-center gap-2" onClick={() => githubLogin()}>

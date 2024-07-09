@@ -1,6 +1,6 @@
 ## LUXURY YOU
-github - https://github.com/Nisha0202/luxury_you.git
-website- https://661fb09f73bf9121f9b432e6--luxury-you-nisha.netlify.app/
+##github - https://github.com/Nisha0202/luxury_you.git
+##website- https://661fb09f73bf9121f9b432e6--luxury-you-nisha.netlify.app/
 
 
 # It is a website with luxurious collections of estates featuring-

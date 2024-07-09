@@ -19,7 +19,7 @@ export default function CardDetails() {
                 {/* details */}
                 <div className='w-full'>
                     <div className="flex flex-col w-full gap-2">
-                        <h1 className=' playful text-xl font-bold text-black'>{estate.estate_title}</h1>
+                        <h1 className='playful text-xl font-bold text-black'>{estate.estate_title}</h1>
                         <div className='flex flex-col gap-4 intent'>
                             <p className='text-gray-600 text-base font-semibold '>{estate.segment_name}</p>
                             <p className='text-gray-600 text-base border-y-2 py-2'>{estate.description}</p>

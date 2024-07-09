@@ -17,7 +17,6 @@ import FirbaseProvider from './FirebaseProbider/FirbaseProvider';
 import UpdateData from './pages/UpdateData';
 import UserProfile from './pages/UserProfile'
 import Clients from './pages/Clients'
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -64,12 +63,10 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <FirbaseProvider>
       <RouterProvider router={router} />
     </FirbaseProvider>
-
   </React.StrictMode>,
 )

@@ -1,5 +1,5 @@
 ## LUXURY YOU
-github - https://github.com/programming-hero-web-course-4/b9a9-real-estate-Nisha0202/tree/main
+github - https://github.com/Nisha0202/luxury_you.git
 website- https://661fb09f73bf9121f9b432e6--luxury-you-nisha.netlify.app/
 
 
